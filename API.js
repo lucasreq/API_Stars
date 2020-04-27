@@ -19,7 +19,7 @@ db.once('open', function (){
     console.log("Connexion à la base OK"); 
 });
 
-var piscineSchema = mongoose.Schema({
+var cardsSchema = mongoose.Schema({
     name: String, 
     faction: String, 
     type: String,
