@@ -45,15 +45,15 @@ module.exports = db.define("cartes", {
     details : DataTypes.TEXT
 });
 
-(async () => {
-    await db.sync({ force: true });
-})();
+// (async () => {
+//     await db.sync({ force: true });
+// })();
 
-function addCard(name,type,faction,cost,details) {
-    const card = Carte.create({name: {name},type: {type}, faction: {faction}, cost: {cost}, details: {details}});
-    console.log(card.name);
-}
+// function addCard(name,type,faction,cost,details) {
+//     const card = Carte.create({name: {name},type: {type}, faction: {faction}, cost: {cost}, details: {details}});
+//     console.log(card.name);
+// }
 
-function deleteCard(name) {
-    Carte.destroy(`'name' LIKE ${name}`).success();
-}
+// function deleteCard(name) {
+//     Carte.destroy(`'name' LIKE ${name}`).success();
+// }
