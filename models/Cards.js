@@ -32,7 +32,7 @@
 const { Sequelize, Model, DataTypes, destroy } = require("sequelize");
 const db = require('../database/config');
 
-const Carte = db.define("cartes", {
+module.exports = db.define("cartes", {
     id : {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -47,7 +47,6 @@ const Carte = db.define("cartes", {
 
 (async () => {
     await db.sync({ force: true });
-    // Code here
 })();
 
 function addCard(name,type,faction,cost,details) {

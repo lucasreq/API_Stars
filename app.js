@@ -24,6 +24,8 @@ app.get('/cartes',function(req,res){
     })
 })
 
+//get cards by id
+
 app.get('/cartes/:id', function(req,res){
     let { id } = req.params;
     Cards.findByPk(id).then((carte) => {
