@@ -24,8 +24,7 @@ app.get('/',function(req,res){
     })
 })
 
-//get cards by id
-
+//get Cards by Id
 app.get('/cartes/:id', function(req,res){
     let { id } = req.params;
     Cards.findByPk(id).then((carte) => {
@@ -38,7 +37,7 @@ app.get('/cartes/:id', function(req,res){
     })
 })
 
-//Create cards
+//create Cards
 app.post("/cartes", (req, res) => 
     Cards.create({
         name: req.body.name,
@@ -50,7 +49,7 @@ app.post("/cartes", (req, res) =>
     }).then( (result) => res.json(result) )
   );
 
-//delete a card
+//delete a Card
 app.delete('/cartes/:id', function (req, res) {
     let { id } = req.params;
 
@@ -68,7 +67,7 @@ app.delete('/cartes/:id', function (req, res) {
     });
 
 
-//Update Cards
+//update Cards
 app.put('/cartes/:id', function (req, res) {
     let { id } = req.params;
     const { title, description } = req.body;
@@ -81,7 +80,7 @@ app.put('/cartes/:id', function (req, res) {
                 id: id
             }
         })
-        .then(todo => res.json({
+        .then(cartes => res.json({
             error: false,
             message: 'todo has been updated.'
         }))
