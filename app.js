@@ -88,7 +88,7 @@ app.put('cartes/:id', function (req, res) {
         })
         .then(status => res.json({
             error: false,
-            message: 'todo has been updated.'
+            message: 'cards has been updated.'
         }))
         .catch(error => res.json({
             error: true,
