@@ -38,12 +38,12 @@ module.exports = db.define("cartes", {
         autoIncrement: true,
         primaryKey: true
     },
-    name: DataTypes.STRING,
-    type : DataTypes.INTEGER,
-    faction : DataTypes.STRING,
+    name: DataTypes.TEXT,
+    type : DataTypes.TEXT,
+    faction : DataTypes.TEXT,
     cost : DataTypes.INTEGER,
     details : DataTypes.TEXT,
-    
+
 });
 
 // (async () => {

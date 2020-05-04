@@ -7,8 +7,9 @@ var route = express.Router();
 
 
 //get Cards by Id
-route.get('/cartes/:id', function(req,res){
+route.get('/:id', function(req,res){
     let { id } = req.params;
+
     Cards.findByPk(id).then((carte) => {
         if (carte){
             res.json(carte);
@@ -20,7 +21,7 @@ route.get('/cartes/:id', function(req,res){
 })
 
 //create Cards
-route.post("/cartes", (req, res) => 
+route.post("/create", (req, res) => 
     Cards.create({
         name: req.body.name,
         type: req.body.type,
@@ -32,7 +33,7 @@ route.post("/cartes", (req, res) =>
   );
 
 //delete a Card
-route.delete('/cartes/:id', function (req, res) {
+route.delete('/:id', function (req, res) {
     let { id } = req.params;
 
     Cards.destroy({ where: {
@@ -40,7 +41,7 @@ route.delete('/cartes/:id', function (req, res) {
     }})
         .then(status => res.json({
             error: false,
-            message: 'todo has been delete.'
+            message: 'card has been delete.'
         }))
         .catch(error => res.json({
             error: true,
@@ -50,7 +51,7 @@ route.delete('/cartes/:id', function (req, res) {
 
 
 //update Cards
-route.put('cartes/:id', function (req, res) {
+route.put('/:id', function (req, res) {
  
     const id = req.params.id;
  
