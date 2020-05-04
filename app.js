@@ -1,101 +1,23 @@
 const express = require('express');
 const Cards = require('./models/Cards');
+var path = require('path');
 //const Sequelize = require('sequelize');
 
 const app = express();
+var route = express.Router();
 
-//get All Cards
-app.get('/',function(req,res){
-    let filter = {};
-    let { q } = req.query;
+var indexRouter = require('./routes/index');
+var apiRestRouter = require('./routes/rest/api');
 
-    if (req.query.q){
-        filter = {
-            where: {
-                name: {
-                    [Sequelize.Op.like]: `${q}%`
-                }
-            }
-        };
-    }
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
 
-    Cards.findAll().then((cartes)=> {
-        res.json(cartes);
-    })
-})
+app.use('/', indexRouter);
+app.use('/cartes',apiRestRouter);
 
-//get Cards by Id
-app.get('/cartes/:id', function(req,res){
-    let { id } = req.params;
-    Cards.findByPk(id).then((carte) => {
-        if (carte){
-            res.json(carte);
-        } else {
-            res.status(404).send();
-        }
-        
-    })
-})
-
-//create Cards
-app.post("/cartes", (req, res) => 
-    Cards.create({
-        name: req.body.name,
-        type: req.body.type,
-        faction: req.body.faction,
-        cost: req.body.cost,
-        details: req.body.details,
-        createdAt: Date.now()
-    }).then( (result) => res.json(result) )
-  );
-
-//delete a Card
-app.delete('/cartes/:id', function (req, res) {
-    let { id } = req.params;
-
-    Cards.destroy({ where: {
-        id: id
-    }})
-        .then(status => res.json({
-            error: false,
-            message: 'todo has been delete.'
-        }))
-        .catch(error => res.json({
-            error: true,
-            error: error
-        }));
-    });
-
-
-//update Cards
-app.put('cartes/:id', function (req, res) {
- 
-    const id = req.params.id;
- 
-    const { name,type,faction,details,image } = req.body;
- 
-    Cards.update({
-            name: name,
-            type: type,
-            faction: faction,
-            details: details,
-            image: image,
-            updatedAt: date.now()
-        }, {
-            where: {
-                id: id
-            }
-        })
-        .then(status => res.json({
-            error: false,
-            message: 'cards has been updated.'
-        }))
-        .catch(error => res.json({
-            error: true,
-            error: error
-        }));
-});
-
+app.use(function(req, res, next) {
+    next(createError(404));
+  });
 
 
 app.listen(8000);
