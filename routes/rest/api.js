@@ -1,8 +1,7 @@
-var express = require('express');
-
+let express = require('express');
 const Cards = require('../../models/Cards');
 
-var route = express.Router();
+let route = express.Router();
 
 
 
@@ -21,7 +20,7 @@ route.get('/:id', function(req,res){
 })
 
 //create Cards
-route.post("/create", (req, res) => 
+route.post("/", (req, res) => 
     Cards.create({
         name: req.body.name,
         type: req.body.type,
@@ -31,6 +30,8 @@ route.post("/create", (req, res) =>
         createdAt: Date.now()
     }).then( (result) => res.json(result) )
   );
+
+    
 
 //delete a Card
 route.delete('/:id', function (req, res) {
@@ -55,15 +56,14 @@ route.put('/:id', function (req, res) {
  
     const id = req.params.id;
  
-    const { name,type,faction,details,image } = req.body;
+    const { name,type,faction,details } = req.body;
  
     Cards.update({
             name: name,
             type: type,
             faction: faction,
             details: details,
-            image: image,
-            updatedAt: date.now()
+            updatedAt: Date.now()
         }, {
             where: {
                 id: id
