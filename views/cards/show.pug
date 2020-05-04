@@ -9,9 +9,13 @@ block content
           th='Name'
           th='Type'
           th='Faction'
-        each i in cartes
+          th='cost'
+          th='details'
+        for i in carte
           tr
             td= i.id
             td= i.name
             td= i.type
             td= i.faction
+            td= i.cost
+            td= i.details

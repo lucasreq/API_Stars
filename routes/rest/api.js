@@ -11,7 +11,7 @@ route.get('/:id', function(req,res){
 
     Cards.findByPk(id).then((carte) => {
         if (carte){
-            res.json(carte);
+            res.render("cards/show", {title:"starRealms", carte });
         } else {
             res.status(404).send();
         }
@@ -28,7 +28,7 @@ route.post("/", (req, res) =>
         cost: req.body.cost,
         details: req.body.details,
         createdAt: Date.now()
-    }).then( (result) => res.json(result) )
+    }).then( (result) => res.redirect("index") )
   );
 
     

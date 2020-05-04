@@ -1,14 +1,6 @@
 let express = require('express');
 let router = express.Router();
 const Cards = require('../models/Cards');
-let bodyParser = require('body-parser');
-
-let app = express();
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-
 
 /* GET home page. */
 router.get('/',function(req,res){
@@ -26,7 +18,7 @@ router.get('/',function(req,res){
   }
 
   Cards.findAll().then((cartes)=> {
-      res.json(cartes);
+      res.render("index", {title:"starRealms", cartes });
   })
 })
 
