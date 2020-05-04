@@ -42,7 +42,8 @@ module.exports = db.define("cartes", {
     type : DataTypes.INTEGER,
     faction : DataTypes.STRING,
     cost : DataTypes.INTEGER,
-    details : DataTypes.TEXT
+    details : DataTypes.TEXT,
+    
 });
 
 // (async () => {

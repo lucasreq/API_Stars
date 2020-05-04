@@ -68,19 +68,25 @@ app.delete('/cartes/:id', function (req, res) {
 
 
 //update Cards
-app.put('/cartes/:id', function (req, res) {
-    let { id } = req.params;
-    const { title, description } = req.body;
-    
+app.put('cartes/:id', function (req, res) {
+ 
+    const id = req.params.id;
+ 
+    const { name,type,faction,details,image } = req.body;
+ 
     Cards.update({
-            title: title,
-            description: description
+            name: name,
+            type: type,
+            faction: faction,
+            details: details,
+            image: image,
+            updatedAt: date.now()
         }, {
             where: {
                 id: id
             }
         })
-        .then(cartes => res.json({
+        .then(status => res.json({
             error: false,
             message: 'todo has been updated.'
         }))
@@ -88,7 +94,7 @@ app.put('/cartes/:id', function (req, res) {
             error: true,
             error: error
         }));
-    });
+});
 
 
 
