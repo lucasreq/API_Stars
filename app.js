@@ -39,7 +39,7 @@ app.get('/cartes/:id', function(req,res){
 })
 
 //Create cards
-app.post("/post/cartes", (req, res) => 
+app.post("/cartes", (req, res) => 
     Cards.create({
         name: req.body.name,
         type: req.body.type,
@@ -51,7 +51,7 @@ app.post("/post/cartes", (req, res) =>
   );
 
 //delete a card
-app.delete('/delete/cartes/:id', function (req, res) {
+app.delete('/cartes/:id', function (req, res) {
     let { id } = req.params;
 
     Cards.destroy({ where: {
@@ -69,7 +69,7 @@ app.delete('/delete/cartes/:id', function (req, res) {
 
 
 //Update Cards
-app.put('/update/cartes/:id', function (req, res) {
+app.put('/cartes/:id', function (req, res) {
     let { id } = req.params;
     const { title, description } = req.body;
     
@@ -90,5 +90,7 @@ app.put('/update/cartes/:id', function (req, res) {
             error: error
         }));
     });
+
+
 
 app.listen(8000);
