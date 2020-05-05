@@ -22,6 +22,10 @@ app.set('view engine', 'pug');
 //Routes
 app.use('/', indexRouter);
 app.use('/cartes',apiRestRouter);
+
+app.get('/cartes', function(req,req){
+  app.render('cards/create', {title: "Create cards"})
+})
   
 
 app.use(function(req, res, next) {

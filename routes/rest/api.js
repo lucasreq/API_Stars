@@ -28,7 +28,7 @@ route.post("/", (req, res) =>
         cost: req.body.cost,
         details: req.body.details,
         createdAt: Date.now()
-    }).then( (result) => res.redirect("index") )
+    }).then( (result) => res.json(result) )
   );
 
     

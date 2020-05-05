@@ -1,0 +1,24 @@
+extends layout
+
+
+section
+  .form-wrap
+    h1 Add A card
+
+    form(action='/cartes' method='POST')
+      .input-group
+        label(for='Name') Name
+        input#name.input-box(type='text' name='name' placeholder='' maxlength='100' value='{{name}}')
+      .input-group
+        label(for='type') Type
+        input#type.input-box(type='text' name='type' placeholder='' maxlength='100' value='{{type}}')
+      .input-group
+        label(for='faction') faction
+        input#faction.input-box(type='text' name='faction' placeholder='' value='{{faction}}')
+      .input-group
+        label(for='cost') Cost
+        textarea#description.input-box(type='number' name='cost' placeholder='' rows='10' value='{{cost}}') 
+      .input-group
+        label(for='details') details
+        input#details.input-box(type='text' name='details' placeholder='' value='{{details}}')
+      input.btn.btn-reverse(type='submit' value='created')
